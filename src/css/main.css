@@ -1,0 +1,111 @@
+/* DysEpoch: David & Goliath, Step 5 build. Minimum readable text is 16px (PRD NFR1). */
+:root {
+  --paper: #f7f3ec;
+  --card: #fffdf8;
+  --ink: #1d1a16;
+  --accent: #8b4513;
+  --line: #e4dccf;
+  --serif: Georgia, "Times New Roman", serif;
+  --sans: "Segoe UI", Arial, sans-serif;
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--serif);
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+body { min-height: 100vh; overflow-wrap: anywhere; }
+
+main#app {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 24px 16px 48px;
+}
+
+.panel {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 20px 16px;
+}
+
+.title, .scene-title { color: var(--accent); line-height: 1.25; margin: 0.4em 0; }
+.title { font-size: 1.75rem; }
+.scene-title { font-size: 1.3rem; }
+.lead { font-size: 1.05rem; }
+
+.dialogue { font-size: 1.1rem; }
+
+.statusbar {
+  font-family: var(--sans);
+  font-size: 16px;
+  background: #efe7d9;
+  border-radius: 6px;
+  padding: 8px 10px;
+  margin-bottom: 12px;
+}
+
+.portrait {
+  font-family: var(--sans);
+  font-size: 16px;
+  min-height: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background: repeating-linear-gradient(45deg, #efe7d9, #efe7d9 10px, #e6dccb 10px, #e6dccb 20px);
+  border: 1px dashed #b9a98f;
+  border-radius: 6px;
+  margin-bottom: 12px;
+  padding: 8px;
+}
+
+.choices { display: grid; gap: 10px; margin-top: 12px; }
+
+.choice {
+  font-family: var(--sans);
+  font-size: 16px;
+  min-height: 44px;
+  padding: 10px 14px;
+  border: 1px solid var(--accent);
+  border-radius: 6px;
+  background: #fff;
+  color: var(--accent);
+  text-align: left;
+  cursor: pointer;
+  margin-top: 12px;
+}
+
+.choice:hover, .choice:focus-visible { background: #f3e6d6; }
+
+.notice {
+  font-family: var(--sans);
+  font-size: 16px;
+  margin-top: 12px;
+}
+
+code { font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 16px; }
+
+.reflection {
+  display: block;
+  width: 100%;
+  min-height: 120px;
+  font-family: var(--sans);
+  font-size: 16px;
+  padding: 10px;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  margin-top: 8px;
+}
+.codex { margin-top: 16px; }
+.codex-heading { color: var(--accent); font-size: 1.2rem; margin: 0.4em 0; }
+.codex-entry { border-top: 1px solid var(--line); padding-top: 10px; margin-top: 10px; }
+.codex-title { color: var(--accent); margin: 0.2em 0; font-size: 1.05rem; }
+.codex-text { font-size: 16px; margin: 0.3em 0; }
+.cite { font-family: var(--sans); font-size: 16px; color: #5b534a; margin: 0; }

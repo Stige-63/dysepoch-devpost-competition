@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>DysEpoch Scope Review</title>
+<style>
+  :root { --ink:#1d1a16; --muted:#5b534a; --accent:#8b4513; --paper:#f7f3ec; --card:#ffffff; --line:#e4dccf; }
+  body { margin:0; font-family: Georgia, "Times New Roman", serif; font-size:17px; line-height:1.6; color:var(--ink); background:var(--paper); }
+  main { max-width:860px; margin:0 auto; padding:24px 16px 56px; }
+  h1 { font-size:2rem; margin:.2em 0 .1em; color:var(--accent); }
+  h2 { font-size:1.3rem; border-bottom:2px solid var(--line); padding-bottom:.3em; margin-top:1.8em; }
+  .status { display:inline-block; background:#fff3d6; border:1px solid #e6c46d; padding:.2em .6em; border-radius:4px; font-family: "Segoe UI", Arial, sans-serif; font-size:14px; }
+  .card { background:var(--card); border:1px solid var(--line); border-radius:8px; padding:16px 18px; margin:12px 0; }
+  .diagram svg { width:100%; height:auto; display:block; }
+  details { background:var(--card); border:1px solid var(--line); border-radius:8px; padding:12px 16px; margin:10px 0; }
+  summary { cursor:pointer; font-family:"Segoe UI", Arial, sans-serif; font-weight:600; font-size:17px; color:var(--accent); }
+  ul { padding-left:1.2em; }
+  footer { margin-top:32px; font-family:"Segoe UI", Arial, sans-serif; font-size:14px; color:var(--muted); }
+</style>
+</head>
+<body>
+<main>
+  <p><span class="status">Status: approved</span></p>
+  <h1>DysEpoch: David &amp; Goliath (Prototype #1)</h1>
+  <p>An immersive, story-driven biblical-history adventure in which the player experiences the encounter between David and Goliath from the view of an Israelite soldier, through exploration, dialogue, choices, and consequences, without changing the Scripture account.</p>
+
+  <h2>How the plan fits together</h2>
+  <div class="card diagram">
+    <svg viewBox="0 0 760 200" role="img" aria-label="Diagram: the player moves through the core loop to a working proof, and the proof is demonstrated in one minute.">
+      <rect x="10" y="60" width="200" height="80" rx="10" fill="#fff" stroke="#8b4513" stroke-width="2"/>
+      <text x="110" y="94" text-anchor="middle" font-family="Segoe UI, Arial" font-size="16" font-weight="700" fill="#1d1a16">Player</text>
+      <text x="110" y="118" text-anchor="middle" font-family="Segoe UI, Arial" font-size="13" fill="#5b534a">a soldier in the Valley of Elah</text>
+      <line x1="210" y1="100" x2="270" y2="100" stroke="#8b4513" stroke-width="2" marker-end="url(#arr)"/>
+      <rect x="270" y="60" width="220" height="80" rx="10" fill="#fff" stroke="#8b4513" stroke-width="2"/>
+      <text x="380" y="94" text-anchor="middle" font-family="Segoe UI, Arial" font-size="16" font-weight="700" fill="#1d1a16">Core loop</text>
+      <text x="380" y="118" text-anchor="middle" font-family="Segoe UI, Arial" font-size="13" fill="#5b534a">nine scenes, choices, morale</text>
+      <line x1="490" y1="100" x2="550" y2="100" stroke="#8b4513" stroke-width="2" marker-end="url(#arr)"/>
+      <rect x="550" y="60" width="200" height="80" rx="10" fill="#fff" stroke="#8b4513" stroke-width="2"/>
+      <text x="650" y="94" text-anchor="middle" font-family="Segoe UI, Arial" font-size="16" font-weight="700" fill="#1d1a16">Proof</text>
+      <text x="650" y="118" text-anchor="middle" font-family="Segoe UI, Arial" font-size="13" fill="#5b534a">final codex, about one minute</text>
+      <defs><marker id="arr" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#8b4513"/></marker></defs>
+    </svg>
+  </div>
+
+  <h2>The unique kernel</h2>
+  <div class="card">
+    <p>The player sees the Valley of Elah through the eyes of a frightened Israelite soldier. Their choices change morale and personal experience, never the biblical outcome.</p>
+    <p><strong>The one thing players should remember:</strong> courage is not the absence of fear; it is choosing to act faithfully despite fear.</p>
+  </div>
+
+  <h2>Who it's for</h2>
+  <div class="card"><p>Players who want an adventure first and a lesson second, and who are curious enough about Scripture and history to explore it further after playing.</p></div>
+
+  <h2>The core loop</h2>
+  <div class="card"><p>The player opens the game from the menu, reads each scene in the Valley of Elah, makes a choice, sees how it affects the soldier's morale, and moves on. Codex entries unlock along the way and are shown at the end. The loop repeats across nine scenes until the final codex.</p></div>
+
+  <h2>Inspiration and identity</h2>
+  <div class="card"><p>Established DysEpoch vision: an immersive historical adventure with interactive storytelling, exploration, and meaningful decisions, where players learn through experience rather than lectures or trivia. No external games or references are named.</p></div>
+
+  <h2>Why this matters to the learner</h2>
+  <div class="card"><p>She wants to strengthen her ability to direct AI-assisted development and move a project from concept to a working, publishable product, while keeping ownership of vision, requirements, quality standards, and final decisions.</p></div>
+
+  <h2>What "working" looks like</h2>
+  <div class="card">
+    <p>A player can start from the menu, complete all nine scenes, make choices that affect soldier morale, discover codex entries, and reach the final codex without errors or missing assets.</p>
+    <p>The prototype remains playable on desktop and mobile, preserves the biblical outcome, and clearly distinguishes Scripture from adapted storytelling.</p>
+    <p>The roughly one-minute gameplay demonstration is evidence that it works. It is not a required play time for players.</p>
+  </div>
+
+  <h2>Scope boundary: now, later, cut</h2>
+  <details open>
+    <summary>Now (in this proof of concept)</summary>
+    <ul>
+      <li>One playable mission set in the Valley of Elah.</li>
+      <li>Nine scenes, soldier morale, interactive choices, and educational codex entries.</li>
+    </ul>
+  </details>
+  <details>
+    <summary>Later (worth doing, not now)</summary>
+    <ul><li>Other mission sets and other biblical-history episodes, after this prototype is complete.</li></ul>
+  </details>
+  <details>
+    <summary>Cut (with reasons)</summary>
+    <ul>
+      <li>Multiple mission sets or episodes: not needed to prove the core loop in a short hackathon.</li>
+      <li>Player progress saving: not needed for a one-run demonstration; the approved scope lists progress as not saved.</li>
+      <li>Any change to the biblical outcome: excluded by the project's accuracy rule.</li>
+    </ul>
+  </details>
+
+  <h2>Reuse of completed prototype work</h2>
+  <div class="card"><p>The completed prototype is the latest approved GitHub <code>main</code> branch of the prototype repository, including Sage's S6 Scripture correction. It is not the earlier commit be204eb. Where this scope matches it, the approved scope, PRD, and spec are referenced rather than redeveloped. The build step will record which work is new.</p></div>
+
+  <footer>Markdown <code>scope.md</code> is the canonical document. This page is a review companion generated from it.</footer>
+</main>
+</body>
+</html>

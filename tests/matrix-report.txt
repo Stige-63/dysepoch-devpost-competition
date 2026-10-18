@@ -1,0 +1,135 @@
+PASS [data] s1_explore leads to a built scene or the menu
+PASS [data] s2_explore_camp leads to a built scene or the menu
+PASS [data] s3_choice_cookfire leads to a built scene or the menu
+PASS [data] s3_choice_supply leads to a built scene or the menu
+PASS [data] s3_choice_brook leads to a built scene or the menu
+PASS [data] s3_cookfire_listen leads to a built scene or the menu
+PASS [data] s3_cookfire_encourage leads to a built scene or the menu
+PASS [data] s3_cookfire_quiet leads to a built scene or the menu
+PASS [data] s3_supply_explain leads to a built scene or the menu
+PASS [data] s3_brook_return leads to a built scene or the menu
+PASS [data] s4_choice_witness leads to a built scene or the menu
+PASS [data] s5_choice_stand leads to a built scene or the menu
+PASS [data] s5_choice_encourage leads to a built scene or the menu
+PASS [data] s5_choice_keep_head_down leads to a built scene or the menu
+PASS [data] s6_choice_believe leads to a built scene or the menu
+PASS [data] s7_choice_reflect leads to a built scene or the menu
+PASS [data] s8_choice_write leads to a built scene or the menu
+PASS [data] s9_choice_again leads to a built scene or the menu
+PASS [data] s9_choice_menu leads to a built scene or the menu
+PASS [data] there are 19 choices
+PASS [data] there are six codex entries
+PASS [phone 390px cookfire-listen+stand] morale total is 45 (PRD FR5)
+PASS [phone 390px cookfire-listen+stand] reaches S9
+PASS [phone 390px cookfire-listen+stand] no JavaScript errors
+PASS [phone 390px cookfire-listen+stand] no failed requests
+PASS [phone 390px cookfire-listen+encourage] morale total is 55 (PRD FR5)
+PASS [phone 390px cookfire-listen+encourage] reaches S9
+PASS [phone 390px cookfire-listen+encourage] no JavaScript errors
+PASS [phone 390px cookfire-listen+encourage] no failed requests
+PASS [phone 390px cookfire-listen+keep] morale total is 20 (PRD FR5)
+PASS [phone 390px cookfire-listen+keep] reaches S9
+PASS [phone 390px cookfire-listen+keep] no JavaScript errors
+PASS [phone 390px cookfire-listen+keep] no failed requests
+PASS [phone 390px cookfire-encourage+stand] morale total is 50 (PRD FR5)
+PASS [phone 390px cookfire-encourage+stand] reaches S9
+PASS [phone 390px cookfire-encourage+stand] no JavaScript errors
+PASS [phone 390px cookfire-encourage+stand] no failed requests
+PASS [phone 390px cookfire-encourage+encourage] morale total is 60 (PRD FR5)
+PASS [phone 390px cookfire-encourage+encourage] reaches S9
+PASS [phone 390px cookfire-encourage+encourage] no JavaScript errors
+PASS [phone 390px cookfire-encourage+encourage] no failed requests
+PASS [phone 390px cookfire-encourage+keep] morale total is 25 (PRD FR5)
+PASS [phone 390px cookfire-encourage+keep] reaches S9
+PASS [phone 390px cookfire-encourage+keep] no JavaScript errors
+PASS [phone 390px cookfire-encourage+keep] no failed requests
+PASS [phone 390px cookfire-quiet+stand] morale total is 40 (PRD FR5)
+PASS [phone 390px cookfire-quiet+stand] reaches S9
+PASS [phone 390px cookfire-quiet+stand] no JavaScript errors
+PASS [phone 390px cookfire-quiet+stand] no failed requests
+PASS [phone 390px cookfire-quiet+encourage] morale total is 50 (PRD FR5)
+PASS [phone 390px cookfire-quiet+encourage] reaches S9
+PASS [phone 390px cookfire-quiet+encourage] no JavaScript errors
+PASS [phone 390px cookfire-quiet+encourage] no failed requests
+PASS [phone 390px cookfire-quiet+keep] morale total is 15 (PRD FR5)
+PASS [phone 390px cookfire-quiet+keep] reaches S9
+PASS [phone 390px cookfire-quiet+keep] no JavaScript errors
+PASS [phone 390px cookfire-quiet+keep] no failed requests
+PASS [phone 390px cookfire] codex entry 1 text at least 16px
+PASS [phone 390px cookfire] codex entry 2 text at least 16px
+PASS [phone 390px cookfire] codex entry 3 text at least 16px
+PASS [phone 390px cookfire] codex entry 4 text at least 16px
+PASS [phone 390px cookfire] S9 no horizontal overflow
+PASS [phone 390px supply] codex entry 1 text at least 16px
+PASS [phone 390px supply] codex entry 2 text at least 16px
+PASS [phone 390px supply] codex entry 3 text at least 16px
+PASS [phone 390px supply] codex entry 4 text at least 16px
+PASS [phone 390px supply] S9 no horizontal overflow
+PASS [phone 390px brook] codex entry 1 text at least 16px
+PASS [phone 390px brook] codex entry 2 text at least 16px
+PASS [phone 390px brook] codex entry 3 text at least 16px
+PASS [phone 390px brook] codex entry 4 text at least 16px
+PASS [phone 390px brook] S9 no horizontal overflow
+PASS [phone 390px] all six codex entries reached and read
+PASS [phone 390px] S1 no horizontal overflow
+PASS [phone 390px] S1 text at least 16px
+PASS [phone 390px] S8 no horizontal overflow
+PASS [phone 390px] S8 text at least 16px
+PASS [desktop 1280px cookfire-listen+stand] morale total is 45 (PRD FR5)
+PASS [desktop 1280px cookfire-listen+stand] reaches S9
+PASS [desktop 1280px cookfire-listen+stand] no JavaScript errors
+PASS [desktop 1280px cookfire-listen+stand] no failed requests
+PASS [desktop 1280px cookfire-listen+encourage] morale total is 55 (PRD FR5)
+PASS [desktop 1280px cookfire-listen+encourage] reaches S9
+PASS [desktop 1280px cookfire-listen+encourage] no JavaScript errors
+PASS [desktop 1280px cookfire-listen+encourage] no failed requests
+PASS [desktop 1280px cookfire-listen+keep] morale total is 20 (PRD FR5)
+PASS [desktop 1280px cookfire-listen+keep] reaches S9
+PASS [desktop 1280px cookfire-listen+keep] no JavaScript errors
+PASS [desktop 1280px cookfire-listen+keep] no failed requests
+PASS [desktop 1280px cookfire-encourage+stand] morale total is 50 (PRD FR5)
+PASS [desktop 1280px cookfire-encourage+stand] reaches S9
+PASS [desktop 1280px cookfire-encourage+stand] no JavaScript errors
+PASS [desktop 1280px cookfire-encourage+stand] no failed requests
+PASS [desktop 1280px cookfire-encourage+encourage] morale total is 60 (PRD FR5)
+PASS [desktop 1280px cookfire-encourage+encourage] reaches S9
+PASS [desktop 1280px cookfire-encourage+encourage] no JavaScript errors
+PASS [desktop 1280px cookfire-encourage+encourage] no failed requests
+PASS [desktop 1280px cookfire-encourage+keep] morale total is 25 (PRD FR5)
+PASS [desktop 1280px cookfire-encourage+keep] reaches S9
+PASS [desktop 1280px cookfire-encourage+keep] no JavaScript errors
+PASS [desktop 1280px cookfire-encourage+keep] no failed requests
+PASS [desktop 1280px cookfire-quiet+stand] morale total is 40 (PRD FR5)
+PASS [desktop 1280px cookfire-quiet+stand] reaches S9
+PASS [desktop 1280px cookfire-quiet+stand] no JavaScript errors
+PASS [desktop 1280px cookfire-quiet+stand] no failed requests
+PASS [desktop 1280px cookfire-quiet+encourage] morale total is 50 (PRD FR5)
+PASS [desktop 1280px cookfire-quiet+encourage] reaches S9
+PASS [desktop 1280px cookfire-quiet+encourage] no JavaScript errors
+PASS [desktop 1280px cookfire-quiet+encourage] no failed requests
+PASS [desktop 1280px cookfire-quiet+keep] morale total is 15 (PRD FR5)
+PASS [desktop 1280px cookfire-quiet+keep] reaches S9
+PASS [desktop 1280px cookfire-quiet+keep] no JavaScript errors
+PASS [desktop 1280px cookfire-quiet+keep] no failed requests
+PASS [desktop 1280px cookfire] codex entry 1 text at least 16px
+PASS [desktop 1280px cookfire] codex entry 2 text at least 16px
+PASS [desktop 1280px cookfire] codex entry 3 text at least 16px
+PASS [desktop 1280px cookfire] codex entry 4 text at least 16px
+PASS [desktop 1280px cookfire] S9 no horizontal overflow
+PASS [desktop 1280px supply] codex entry 1 text at least 16px
+PASS [desktop 1280px supply] codex entry 2 text at least 16px
+PASS [desktop 1280px supply] codex entry 3 text at least 16px
+PASS [desktop 1280px supply] codex entry 4 text at least 16px
+PASS [desktop 1280px supply] S9 no horizontal overflow
+PASS [desktop 1280px brook] codex entry 1 text at least 16px
+PASS [desktop 1280px brook] codex entry 2 text at least 16px
+PASS [desktop 1280px brook] codex entry 3 text at least 16px
+PASS [desktop 1280px brook] codex entry 4 text at least 16px
+PASS [desktop 1280px brook] S9 no horizontal overflow
+PASS [desktop 1280px] all six codex entries reached and read
+PASS [desktop 1280px] S1 no horizontal overflow
+PASS [desktop 1280px] S1 text at least 16px
+PASS [desktop 1280px] S8 no horizontal overflow
+PASS [desktop 1280px] S8 text at least 16px
+
+Total checks: 133; failed: 0

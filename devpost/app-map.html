@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>DysEpoch App Map</title>
+<style>
+body{margin:0;font-family:Georgia,"Times New Roman",serif;font-size:17px;line-height:1.5;background:#f7f3ec;color:#1d1a16}
+main{max-width:960px;margin:0 auto;padding:24px 16px}
+h1{color:#8b4513;font-size:1.8rem} p{margin:.6em 0}
+table{width:100%;border-collapse:collapse;background:#fff;font-family:"Segoe UI",Arial,sans-serif;font-size:16px;display:block;overflow-x:auto}
+th,td{border:1px solid #e4dccf;padding:8px 10px;text-align:left;vertical-align:top} th{background:#efe7d9}
+code{font-size:16px}
+</style></head><body><main>
+<h1>DysEpoch: David &amp; Goliath, App Map</h1>
+<p>Where each part of the finished game lives, what it does, and which requirement and test cover it. Generated from the code in this folder.</p>
+<p>Run: from the game folder, <code>python3 -m http.server 8000</code>, then open <code>http://localhost:8000</code>.</p>
+<table><thead><tr><th>File</th><th>What it does</th><th>Requirement</th><th>Evidence</th></tr></thead><tbody>
+<tr><td><code>index.html</code></td><td>Entry page; loads the stylesheet and the engine module; shows the local-server notice if opened from disk</td><td>NFR4</td><td>test_slice1 (file:// notice)</td></tr>
+<tr><td><code>src/data/story.json</code></td><td>All scripted dialogue, choices (19), morale values, portrait rules by scene, six codex entries (KJV)</td><td>FR2-FR5, FR9</td><td>matrix (data check, 19 choices, six codex)</td></tr>
+<tr><td><code>src/js/state.js</code></td><td>In-memory state: scene, dialogue position, morale (starts 0), codex list, reflection text</td><td>FR1, FR5, FR9, FR10</td><td>matrix (morale totals)</td></tr>
+<tr><td><code>src/js/engine.js</code></td><td>Loads the story, renders scenes and dialogue, applies choices and morale, unlocks codex, handles reflection, menu and play again</td><td>FR1-FR4, FR8, FR10, FR11</td><td>test_slice1-5, matrix</td></tr>
+<tr><td><code>src/js/portraits.js</code></td><td>Soldier steadied at 20 or above, weary below; Goliath close in S5, distant in S7</td><td>FR6, FR7</td><td>test_slice3 (boundary at 19/20)</td></tr>
+<tr><td><code>src/css/main.css</code></td><td>Layout and styles; text at least 16px; no sideways scroll</td><td>NFR1, NFR2</td><td>matrix (size and overflow checks)</td></tr>
+<tr><td><code>tests/helpers.py</code></td><td>Shared browser-test helpers (server, route, codex)</td><td>NFR3 support</td><td>used by all tests</td></tr>
+<tr><td><code>tests/test_slice1.py to test_slice5.py</code></td><td>Mechanical checks for each build slice</td><td>Build verification</td><td>run each to check that slice</td></tr>
+<tr><td><code>tests/matrix.py</code></td><td>Full check: nine combinations, morale totals, 19 choices, six codex entries, layout</td><td>Acceptance criteria 1-5, NFR3</td><td>tests/matrix-report.txt (133 checks)</td></tr>
+<tr><td><code>LICENSE, NOTICE, THIRD_PARTY_NOTICES.md</code></td><td>Apache-2.0 licence for code and documentation; notices; artwork status</td><td>Legal</td><td>Not a test; artwork is excluded and documented</td></tr>
+</tbody></table>
+<p>Route through the story: S1 to S2 to S3 (camp). From S3 the player chooses the cookfire, the supply tent, or the brook. The cookfire leads to S3.1 and then S4. The supply tent and the brook lead to S4. S4 to S5 (battle line), then S6 (David), S7 (the battle), S8 (reflection), and S9 (codex and ending).</p>
+</main></body></html>

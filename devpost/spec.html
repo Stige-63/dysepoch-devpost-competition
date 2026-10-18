@@ -1,0 +1,181 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>DysEpoch Technical Spec</title>
+<style>
+body{margin:0;font-family:Georgia,"Times New Roman",serif;font-size:17px;line-height:1.6;color:#1d1a16;background:#f7f3ec}
+main{max-width:900px;margin:0 auto;padding:24px 16px 56px}
+h1{font-size:2rem;color:#8b4513} h2{font-size:1.3rem;border-bottom:2px solid #e4dccf;padding-bottom:.3em;margin-top:1.8em}
+h3{font-size:1.1rem;color:#8b4513;margin-bottom:.3em}
+.status{display:inline-block;background:#fff3d6;border:1px solid #e6c46d;padding:.2em .6em;border-radius:4px;font-family:"Segoe UI",Arial,sans-serif;font-size:15px}
+pre{background:#fff;border:1px solid #e4dccf;border-radius:8px;padding:12px;overflow-x:auto;font-size:15px;line-height:1.4}
+table{width:100%;border-collapse:collapse;background:#fff;font-size:16px;display:block;overflow-x:auto}
+th,td{border:1px solid #e4dccf;padding:8px 10px;text-align:left;vertical-align:top} th{background:#efe7d9}
+li.sub{margin-left:1.2em;list-style:circle}
+code{background:#efe7d9;padding:0 .2em;border-radius:3px}
+footer{margin-top:32px;font-family:"Segoe UI",Arial,sans-serif;font-size:15px;color:#5b534a}
+</style></head><body><main>
+<p><span class="status">Status: approved</span></p>
+<h1>DysEpoch: David &amp; Goliath (Prototype #1): Technical Spec</h1>
+<p><strong>Companion documents:</strong> scope.md (approved), prd.md (approved, with the NFR4 clarification).</p>
+<p><strong>Reference only:</strong> the completed prototype (latest approved GitHub main). This build is a new implementation that follows the same product decisions; the prototype&#x27;s code is read for reference, not copied wholesale.</p>
+<h2>How This Works, In Plain Language</h2>
+<ul>
+<li><strong>The page is the game.</strong> One web page (<code>index.html</code>) loads a stylesheet for the look and a script for the game. The browser runs it. There is no install and no framework.</li>
+<li><strong>The story is data.</strong> All dialogue, choices, morale changes, and codex entries live in one data file (<code>src/data/story.json</code>). The script reads it, so the story can be changed without changing the game logic.</li>
+<li><strong>The game is a state machine.</strong> The game remembers which scene it&#x27;s on and the soldier&#x27;s morale. Each choice names its next scene and its morale change. Choosing a button applies the change and moves to the named scene. That is how choices control progression.</li>
+<li><strong>The local server is a delivery truck.</strong> Browsers won&#x27;t load the story data straight from the disk, so a tiny web server on your machine hands the files to the browser. It does nothing else. Opening <code>index.html</code> by double-clicking won&#x27;t work for this reason.</li>
+<li><strong>Testing is an automated player.</strong> A script opens the game in a real browser, clicks through every path, and checks each requirement in the PRD&#x27;s acceptance criteria. If a check fails, the build is not done.</li>
+<li><strong>Public hosting is the same delivery truck on the internet.</strong> Anyone can reach the files, so only the game files may be published. Private planning notes, learner profiles, and internal checklists stay out of any published folder.</li>
+</ul>
+<p>Why this shape: the PRD needs one short, offline-capable, scripted experience. Plain files plus one data file is the smallest design that meets it and is easy to check.</p>
+<h2>The Core Journey Through the System</h2>
+<p>1. The player opens the page → <code>index.html</code> loads → the script reads <code>story.json</code>.</p>
+<p>2. The menu appears → Start Game sets the scene to S1 and morale to 0 (PRD FR1).</p>
+<p>3. Each scene shows its title, description, dialogue, and portraits (FR2). Next advances dialogue (FR3).</p>
+<p>4. A choice applies its morale change, then moves to its next scene (FR4, FR5).</p>
+<p>5. The soldier portrait switches between weary and steadied at morale 20 (FR6). Goliath and player portraits follow the scene rules (FR7, FR8).</p>
+<p>6. Codex entries unlock as scenes are reached and appear in S9 (FR9).</p>
+<p>7. S8 takes a reflection entry and continues (FR10). S9 offers play again or menu (FR11).</p>
+<p>PRD ref: <code>prd.md &gt; 3. Player experience</code>, <code>prd.md &gt; 4. Scene flow</code>, <code>prd.md &gt; 5. Functional requirements</code>.</p>
+<h2>Stack</h2>
+<ul>
+<li><strong>HTML5, CSS3, and plain JavaScript (ES2020).</strong> No framework, no build step, no package installs. Learner agreed (Question 1).</li>
+<li>Docs: https://developer.mozilla.org/en-US/docs/Web/HTML, https://developer.mozilla.org/en-US/docs/Web/CSS, https://developer.mozilla.org/en-US/docs/Web/JavaScript</li>
+<li>Rationale: the PRD needs one short scripted experience. Fewer moving parts means fewer things to break before the deadline. Accepted tradeoff: no component library; layout is written by hand.</li>
+<li><strong>Local HTTP server:</strong> Python&#x27;s built-in <code>python3 -m http.server</code>. Docs: https://docs.python.org/3/library/http.server.html</li>
+<li><strong>Automated testing:</strong> Playwright for Python, driving Chromium. Docs: https://playwright.dev/python/docs/intro</li>
+<li>Note: the test tool is needed only to verify the build. It is not part of the game.</li>
+<li><strong>Hosting (optional, Question 2 answer B):</strong> static file hosting of a published copy of the game folder only. Platform to be chosen at the ship step (GitHub Pages is one option). Docs: https://docs.github.com/en/pages</li>
+<li>Hosting does not require accounts, payment, or installation for players.</li>
+</ul>
+<h2>Where It Runs and How Someone Tries It</h2>
+<ul>
+<li><strong>Runtime:</strong> any current desktop or mobile browser, served over HTTP. No internet connection is needed once served locally (PRD NFR4).</li>
+<li><strong>Local start:</strong> from the game folder, run <code>python3 -m http.server 8000</code>, then open <code>http://localhost:8000</code>.</li>
+<li><strong>Recording for the video:</strong> the same local start, then record the browser window.</li>
+<li><strong>Public link (after approval):</strong> a published copy of the game folder at a public address. Only these may be published: <code>index.html</code>, <code>src/</code>, <code>assets/</code>, <code>LICENSE</code>, <code>NOTICE</code>, <code>README.md</code>, and <code>THIRD_PARTY_NOTICES.md</code>.</li>
+<li><strong>Submission requirements:</strong> a short demo video and a public GitHub repository. Hosting is additional evidence and does not replace either.</li>
+<li><strong>Blocked until approved:</strong> publishing the repository, publishing the artwork, and hosting any artwork. See Decisions and Open Issues.</li>
+</ul>
+<p>PRD ref: <code>prd.md &gt; 6. Non-functional requirements</code> (NFR4, NFR6).</p>
+<h2>Look and Feel</h2>
+<ul>
+<li>Cinematic Realism: the approved character portraits and scene backgrounds, displayed as they are. No redesign.</li>
+<li>Typography: a serif for narrative and headings (Georgia, with fallbacks) and a sans-serif for buttons and status text (Segoe UI, with fallbacks). System fonts only; no font files bundled.</li>
+<li>Palette: warm paper background, dark brown accent, cream cards. Colours follow the prototype&#x27;s approved palette.</li>
+<li>Text: at least 16px for all narrative, codex, reflection, objective, choice, secondary-button, status-bar, and footer text on desktop and mobile (PRD NFR1).</li>
+<li>Constraint: the static stack can honour all of this with CSS. No animation library.</li>
+</ul>
+<p>PRD ref: <code>prd.md &gt; Decisions Recorded</code>, NFR1.</p>
+<h2>Components</h2>
+<h3>Story data (<code>src/data/story.json</code>)</h3>
+<p>Scenes, dialogue lines, choices (each with its next scene and morale change), portrait rules, and codex entries. Every Scripture quotation is marked and checked against the King James Version.</p>
+<p>PRD ref: <code>prd.md &gt; 4. Scene flow</code>, FR4, FR5, FR9.</p>
+<h3>Game state (<code>src/js/state.js</code>)</h3>
+<p>Holds the current scene, morale (starts at 0), codex entries unlocked, and reflection text. Provides a reset for play again.</p>
+<p>PRD ref: FR1, FR5, FR9, FR11.</p>
+<h3>Scene engine (<code>src/js/engine.js</code>)</h3>
+<p>Renders a scene&#x27;s title, description, dialogue (with Next), portraits, and choices. Applies a chosen morale change and moves to the next scene. Handles the S3 hotspot return and the S8 reflection step.</p>
+<p>PRD ref: FR2, FR3, FR4, FR8, FR10.</p>
+<h3>Portrait rules (<code>src/js/portraits.js</code>)</h3>
+<p>Returns the weary or steadied soldier portrait by morale, and the close or distant Goliath portrait by scene.</p>
+<p>PRD ref: FR6, FR7.</p>
+<h3>Codex (<code>src/js/codex.js</code>)</h3>
+<p>Unlocks entries when their scene is reached and renders them in S9 with their citations.</p>
+<p>PRD ref: FR9.</p>
+<h3>Layout and styles (<code>src/css/main.css</code>)</h3>
+<p>Responsive layout for 390px phone and 1280px desktop. Minimum 16px text. No horizontal scroll.</p>
+<p>PRD ref: NFR1, NFR2.</p>
+<h3>Automated checks (<code>tests/</code>)</h3>
+<p>Plays the nine S3/S5 combinations on desktop and mobile, checks morale totals, all 19 choices, codex reachability, text size, and overflow. Writes a pass or fail report.</p>
+<p>PRD ref: acceptance criteria 1–5, NFR3.</p>
+<h2>Data Model</h2>
+<ul>
+<li><strong>Story data:</strong> read-only at runtime, loaded once on start.</li>
+<li><strong>Game state:</strong> held in memory only. Refreshing the page returns to the menu. Progress is not saved (scope Explicitly Cut). For each piece: current scene (reset on play again), morale (reset to 0), codex unlocked (reset), reflection text (kept only for the current run).</li>
+</ul>
+<h2>File Structure</h2>
+<pre>
+dysepoch-david-goliath/              (new implementation folder)
+├── index.html                       entry page
+├── README.md                        how to run locally; what is in the repo
+├── LICENSE                          Apache-2.0 (code and documentation)
+├── NOTICE                           copyright and artwork exclusion
+├── THIRD_PARTY_NOTICES.md           third-party and artwork status
+├── src/
+│   ├── css/main.css                 layout and styles
+│   ├── data/story.json              dialogue, choices, codex
+│   └── js/
+│       ├── state.js                 game state
+│       ├── engine.js                scene engine
+│       ├── portraits.js             portrait rules
+│       └── codex.js                 codex unlock and display
+├── assets/                          approved portraits and backgrounds (reuse after rights check)
+├── tests/                           automated player checks
+├── devpost/                         learning workspace (NOT published)
+└── .gitignore                       keeps devpost/learner-profile.md and secrets out of commits
+</pre>
+<h2>External Services and Dependencies</h2>
+<ul>
+<li>None at runtime. No API keys, no external scripts, no fonts downloaded (PRD NFR4).</li>
+<li>Test tooling only: Playwright (Python) and Chromium. Not included in the published game.</li>
+<li>Optional hosting platform (to be chosen at ship). Keys: none.</li>
+</ul>
+<h2>Important Failure Modes</h2>
+<ul>
+<li><strong>Dialogue file does not load</strong> (opened without a server) → the page shows a short message telling the player to start a local server, instead of a blank screen.</li>
+<li><strong>Portrait file missing</strong> → a labelled placeholder with the character name, and the test run fails so it is caught before recording.</li>
+<li><strong>Text overflows on a small phone</strong> → the layout wraps and scrolls inside the card, never horizontally on the page; the overflow check catches regressions.</li>
+</ul>
+<h2>What Was Simplified and Why</h2>
+<ul>
+<li><strong>No progress saving</strong> instead of saved games — a single run is enough for the demonstration and matches the approved scope.</li>
+<li><strong>Static files and one data file</strong> instead of a database or server logic — nothing in the PRD needs either, and it removes the most common ways a hackathon build breaks.</li>
+<li><strong>Scripted dialogue only</strong> instead of AI-generated text — the PRD requires scripted dialogue and offline play (NFR4).</li>
+</ul>
+<h2>Decisions and Open Issues</h2>
+<p><strong>Learner decisions (October 17, 2026):</strong></p>
+<ul>
+<li>Same technology as the approved prototype: plain HTML, CSS, and JavaScript; one data file for scripted dialogue; simple HTTP server.</li>
+<li>Reuse the approved Cinematic Realism portraits and backgrounds once their rights and permitted uses are verified.</li>
+<li>Hosting: also hosted online, so judges can click and play. No accounts, payment, or installation for players. The repository and video remain as submission evidence.</li>
+</ul>
+<p><strong>Derived implementation decisions (for agreement):</strong></p>
+<ul>
+<li>The new build is a new implementation. The completed prototype is used as reference. Assets are copied only after the rights check.</li>
+<li>Tests are automated browser checks written in Python with Playwright.</li>
+</ul>
+<p><strong>Learner uncertainty (Question 3), with what clarified it:</strong></p>
+<ul>
+<li>How approved requirements become code: explained above (requirement → scene data → engine → automated check).</li>
+<li>How dialogue and choices control progression: explained above (choices name the next scene and morale change; the engine follows them).</li>
+<li>How testing verifies requirements: explained above (automated player against the acceptance criteria).</li>
+<li>Local server vs public hosting: explained above (same files; local is only on your machine, hosting makes them public).</li>
+<li>Secure deployment: only the listed game files are published. The <code>devpost/</code> folder, learner profile, and internal notes are never copied to a published folder. Before any push, check that git history contains no private material.</li>
+</ul>
+<p><strong>Open items (block publication, not the build):</strong></p>
+<ul>
+<li><strong>Artwork rights and tool terms (OPEN).</strong> Reuse and hosting of the artwork must wait for verification (THIRD_PARTY_NOTICES.md section 8).</li>
+<li><strong>Public repository and hosting (OPEN).</strong> Requires the rights checks and your explicit approval (Sheron).</li>
+<li><strong>S6 Scripture text.</strong> The new build must use the verbatim KJV line (Sage&#x27;s correction) and be checked against a KJV text.</li>
+<li><strong>Devpost Skill Pack usage.</strong> Recorded as it actually occurs in each step.</li>
+</ul>
+<h2>Publication Policy (decision, Step 4 correction)</h2>
+<ul>
+<li><strong>Published with the repository:</strong> the game files (<code>index.html</code>, <code>src/</code>, <code>assets/</code>, <code>tests/</code>), <code>README.md</code>, <code>LICENSE</code>, <code>NOTICE</code>, <code>THIRD_PARTY_NOTICES.md</code>, and the non-sensitive Skill Pack evidence and planning documents required by the competition: <code>devpost/scope.md</code>, <code>devpost/prd.md</code>, <code>devpost/spec.md</code>, and their HTML review companions, plus <code>devpost/checklist.md</code> when it exists.</li>
+<li><strong>Never published:</strong> <code>devpost/learner-profile.md</code> (personal learning context), any credentials or <code>.env</code> files, internal notes, and the prototype&#x27;s private planning or Phase records.</li>
+<li><strong>Gated (not published yet):</strong> the artwork in <code>assets/</code> and any online hosting of it. Both wait until the rights and tool-terms checks are resolved and approved.</li>
+<li><strong>Before any push:</strong> check that the file list and git history contain nothing from the &quot;never published&quot; list.</li>
+</ul>
+<h2>Reuse Register (decision, Step 4 correction)</h2>
+<table><tbody>
+<tr><th>Component</th><th>Status</th><th>Source</th><th>Notes</th></tr>
+<tr><td>Story content (nine scenes, 19 choices, morale values, codex text)</td><td>Reused, rechecked</td><td>Approved prototype data</td><td>Text as approved; S6 Scripture correction from GitHub main is preserved</td></tr>
+<tr><td>Scene engine, state, portrait rules, codex display</td><td>Newly implemented</td><td>Written in this workspace</td><td>Prototype logic read for reference</td></tr>
+<tr><td>Stylesheet</td><td>Newly implemented</td><td>Written in this workspace</td><td>Cinematic Realism look and 16px minimum text kept</td></tr>
+<tr><td>Portraits and backgrounds</td><td>Reused, gated</td><td>Approved Muse artwork</td><td>Used only after rights and tool-terms checks</td></tr>
+<tr><td>Automated tests</td><td>Newly implemented</td><td>Written in this workspace</td><td>Covers the PRD acceptance criteria</td></tr>
+<tr><td>Documentation (scope, PRD, spec, README, notices)</td><td>Approved, carried forward</td><td>Prototype and Skill Pack steps</td><td>Skill Pack step records added as each step completes</td></tr>
+</tbody></table>
+<footer>The Markdown file is the canonical document. This page is a review companion generated from it.</footer>
+</main></body></html>

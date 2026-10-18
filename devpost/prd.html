@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>DysEpoch PRD Review</title>
+<style>
+body{margin:0;font-family:Georgia,"Times New Roman",serif;font-size:17px;line-height:1.6;color:#1d1a16;background:#f7f3ec}
+main{max-width:900px;margin:0 auto;padding:24px 16px 56px}
+h1{font-size:2rem;color:#8b4513} h2{font-size:1.3rem;border-bottom:2px solid #e4dccf;padding-bottom:.3em;margin-top:1.8em}
+.status{display:inline-block;background:#fff3d6;border:1px solid #e6c46d;padding:.2em .6em;border-radius:4px;font-family:"Segoe UI",Arial,sans-serif;font-size:15px}
+table{width:100%;border-collapse:collapse;background:#fff;font-size:16px;display:block;overflow-x:auto}
+th,td{border:1px solid #e4dccf;padding:8px 10px;text-align:left;vertical-align:top}
+th{background:#efe7d9} code{background:#efe7d9;padding:0 .2em;border-radius:3px}
+footer{margin-top:32px;font-family:"Segoe UI",Arial,sans-serif;font-size:15px;color:#5b534a}
+</style></head><body><main>
+<p><span class="status">Status: approved</span></p>
+<h1>Product Requirements: DysEpoch: David &amp; Goliath (Prototype #1)</h1>
+<p><strong>Companion documents:</strong> scope.md (what is in and out, approved), spec.md (to be written in Step 4).</p>
+<p><strong>Basis:</strong> the approved prototype PRD (latest approved GitHub main), carried forward as decided by the learner on October 17, 2026.</p>
+<h2>Decisions Recorded (learner, October 17, 2026)</h2>
+<ul>
+<li>The approved prototype PRD is the base. The player journey, FR1–FR11, NFR1–NFR6, acceptance criteria, and approved scope are preserved.</li>
+<li>The Cinematic Realism look is kept. Approved character portraits, backgrounds, and cinematic visual design are retained. No redesign.</li>
+<li>Text-size exception resolved (Option A): mobile choice buttons, secondary buttons, status-bar text, and footer text are raised to at least 16px. The layout must not overflow, clip, or break on desktop or mobile.</li>
+</ul>
+<h2>1. Problem</h2>
+<p>Historical and biblical learning is often delivered as text or quizzes. Students and young adults disengage. DysEpoch tests whether a short, choice-driven story can make the player feel present in a historical moment, with the facts and Scripture revealed through that experience.</p>
+<h2>2. Target player</h2>
+<ul>
+<li>Adults and older teens who like short narrative games.</li>
+<li>Readers interested in the David and Goliath account, including people who have not studied it closely.</li>
+<li>Judges of the Build With AI: Basics competition, who need to see a working experience quickly.</li>
+</ul>
+<h2>3. Player experience</h2>
+<p>The target reaction is &quot;I experienced this,&quot; not &quot;I studied this.&quot;</p>
+<p>Core loop: enter the era → receive the mission → explore the camp → make choices → experience consequences → witness the event → reflect → complete.</p>
+<h2>4. Scene flow</h2>
+<table><tbody>
+<tr><th>Scene</th><th>Title (short)</th><th>Player action</th></tr>
+<tr><td>S1</td><td>Valley of Elah — The Standoff</td><td>Make the one choice to continue</td></tr>
+<tr><td>S2</td><td>The Camp — Saul&#x27;s Orders</td><td>Make the one choice to continue</td></tr>
+<tr><td>S3</td><td>The Israelite Camp — Exploration</td><td>Choose a hotspot: cookfire, supply tent, or brook</td></tr>
+<tr><td>S3.1</td><td>The Cookfire</td><td>Choose: listen, encourage, or sit in silence</td></tr>
+<tr><td>S3.2</td><td>The Supply Tent</td><td>Make the one choice to return to the camp</td></tr>
+<tr><td>S3.3</td><td>The Brook</td><td>Make the one choice to return to the camp</td></tr>
+<tr><td>S4</td><td>The Camp — A Shepherd Arrives</td><td>Make the one choice to continue (David arrives with provisions)</td></tr>
+<tr><td>S5</td><td>The Battle Line — Goliath&#x27;s Challenge</td><td>Choose: stand, encourage, or keep your head down</td></tr>
+<tr><td>S6</td><td>After the Taunt — A Young Shepherd&#x27;s Faith</td><td>Make the one choice to continue</td></tr>
+<tr><td>S7</td><td>The Valley — David Meets Goliath</td><td>Make the one choice to continue (witness the encounter)</td></tr>
+<tr><td>S8</td><td>Reflection</td><td>Write a reflection, then continue</td></tr>
+<tr><td>S9</td><td>Aftermath — The Codex &amp; Your Journey</td><td>Review codex entries; play again or return to menu</td></tr>
+</tbody></table>
+<h2>5. Functional requirements</h2>
+<ul>
+<li><strong>FR1</strong> The player starts from a menu and begins at S1.</li>
+<li><strong>FR2</strong> Each scene shows its title, description, scripted dialogue, and the portraits of the characters present.</li>
+<li><strong>FR3</strong> Dialogue advances with a Next/Continue control.</li>
+<li><strong>FR4</strong> Each choice applies its declared consequence, then moves to its next scene.</li>
+<li><strong>FR5</strong> Soldier morale starts at 0 and changes by the declared amount for each choice:</li>
+<li>Choosing the S3 cookfire hotspot adds +10.</li>
+<li>S3 cookfire: listen +20, encourage +25, quiet +15.</li>
+<li>S5: stand +15, encourage +25, keep head down −10.</li>
+<li><strong>FR6</strong> The soldier portrait is the weary version below morale 20, and the steadied version at 20 or above.</li>
+<li><strong>FR7</strong> The Goliath portrait is the close version in S5, and the distant version in S7.</li>
+<li><strong>FR8</strong> The player portrait appears in every scene.</li>
+<li><strong>FR9</strong> Six codex entries unlock during play and are shown in S9. Scripture quotations are verbatim KJV.</li>
+<li><strong>FR10</strong> S8 shows a reflection prompt. The player may enter text and continue.</li>
+<li><strong>FR11</strong> S9 offers &quot;play again&quot; and &quot;menu.&quot;</li>
+</ul>
+<h2>6. Non-functional requirements</h2>
+<ul>
+<li><strong>NFR1 Readability.</strong> Narrative, codex, reflection, objective, choice, secondary-button, status-bar, and footer text is at least 16px (12pt) on desktop and mobile. This replaces the earlier open exceptions (15.2px and 14px).</li>
+<li><strong>NFR2 Layout.</strong> No horizontal page scroll on a 390px-wide phone or a 1280px-wide desktop. No text overflow or clipping after the NFR1 size change.</li>
+<li><strong>NFR3 Reliability.</strong> No JavaScript errors and no failed asset requests in any of the nine S3/S5 combinations.</li>
+<li><strong>NFR4 Offline behavior.</strong> The game requires an HTTP server to load its local files but does not require external APIs, cloud services, or an internet connection when served locally. All gameplay dialogue is scripted.</li>
+<li><strong>NFR5 Duration.</strong> A complete playthrough takes about 5–10 minutes.</li>
+<li><strong>NFR6 Compatibility.</strong> Current desktop and mobile browsers, served over HTTP.</li>
+</ul>
+<h2>7. Acceptance criteria</h2>
+<p>1. All nine S3/S5 combinations reach S9 on desktop and on mobile.</p>
+<p>2. Morale totals match FR5 in every combination.</p>
+<p>3. All 19 choices lead to their declared next scene.</p>
+<p>4. All six codex entries can be reached and read on desktop and mobile.</p>
+<p>5. No overflow, clipping, or layout break in S1, S8, or S9 on either viewport, with all text at the NFR1 size.</p>
+<h2>8. Out of scope for this release</h2>
+<p>As decided in scope.md, &quot;Explicitly Cut&quot; and &quot;Later&quot;: other mission sets or episodes, progress saving, and any change to the biblical outcome.</p>
+<h2>9. Open questions</h2>
+<ul>
+<li><strong>Artwork reuse (OPEN).</strong> The Cinematic Realism look depends on reusing the approved portraits and backgrounds. Their rights and the image tool&#x27;s terms are not yet independently verified (see THIRD_PARTY_NOTICES.md, section 8). Reuse is permitted for the prototype build only after those are confirmed.</li>
+<li><strong>Devpost Skill Pack usage</strong> is recorded in the learner profile and build log as it occurs, not assumed here.</li>
+<li><strong>Licence</strong> for the new work is to be confirmed at the ship step.</li>
+</ul>
+<footer>Markdown <code>prd.md</code> is the canonical document. This page is a review companion generated from it.</footer>
+</main></body></html>

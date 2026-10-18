@@ -1,0 +1,319 @@
+{
+  "metadata": {
+    "title": "DysEpoch: David & Goliath",
+    "scriptureTranslation": "KJV",
+    "build": "Step 5, slices 4-5 (encounter, reflection, codex, ending)"
+  },
+  "start": "s1_arrival",
+  "scenes": {
+    "s1_arrival": {
+      "title": "Valley of Elah - The Standoff",
+      "dialogue": [
+        "You stand at the edge of the Israelite camp in the Valley of Elah. For days now, you have held position here with your brothers and the other soldiers.",
+        "The valley spreads out below: two armies waiting, facing each other across the ravine. On the far slope, the Philistine forces mass in shadow. The air is tense, heavy with waiting.",
+        "You grip your spear and take a breath. This is the forty-first day."
+      ],
+      "choices": [
+        {
+          "id": "s1_explore",
+          "text": "Move through the camp to understand what the men are facing",
+          "next": "s2_meet_saul",
+          "morale": 0
+        }
+      ],
+      "unlocks": [
+        "codex_valley_setting"
+      ]
+    },
+    "s2_meet_saul": {
+      "title": "The Camp - Saul's Orders",
+      "dialogue": [
+        "You move through the camp and see King Saul on a rise overlooking the valley, his armor heavy in the late light. Forty days of stalemate have etched lines deep into his face.",
+        "A senior officer passes nearby, relaying orders to the gathered men: \"The king's word: hold your ground. No advances, no challenges. Watch the Philistine line and report any movement.\" The officer continues on. Saul remains at his post, distant, waiting."
+      ],
+      "choices": [
+        {
+          "id": "s2_explore_camp",
+          "text": "Head into the camp to find your brothers and learn what the men are facing",
+          "next": "s3_explore_camp",
+          "morale": 0
+        }
+      ]
+    },
+    "s3_explore_camp": {
+      "title": "The Israelite Camp - Exploration & Choices",
+      "dialogue": [
+        "You enter the camp proper. Soldiers move slowly between tents, their faces guarded. Cookfires scatter smoke.",
+        "You see three places: a smoldering cookfire where exhausted men gather, a supply tent with stacked provisions, and a path leading down to a small brook. Your brothers should be somewhere nearby. Where will you look first?"
+      ],
+      "choices": [
+        {
+          "id": "s3_choice_cookfire",
+          "text": "Sit by the cookfire and listen to the men",
+          "next": "s3_hotspot_cookfire",
+          "morale": 10
+        },
+        {
+          "id": "s3_choice_supply",
+          "text": "Head to the supply tent to find the captain",
+          "next": "s3_hotspot_supply",
+          "morale": 0
+        },
+        {
+          "id": "s3_choice_brook",
+          "text": "Slip away to the quiet brook for a moment",
+          "next": "s3_hotspot_brook",
+          "morale": 0
+        }
+      ]
+    },
+    "s3_hotspot_cookfire": {
+      "title": "The Cookfire - Fear and Exhaustion",
+      "dialogue": [
+        "You sit by the low fire. The soldiers around it regard you with tired eyes. One of them, bearing and manner marking him as someone with weight on his shoulders, speaks first. This is the soldier your choices will move.",
+        "\"You're from home. I can see it. Are things... are things well in Bethlehem?\""
+      ],
+      "choices": [
+        {
+          "id": "s3_cookfire_listen",
+          "text": "Listen to what the soldier has to say about the standoff",
+          "next": "s4_gather_provisions",
+          "morale": 20
+        },
+        {
+          "id": "s3_cookfire_encourage",
+          "text": "Tell the soldier you believe the Israelites will prevail",
+          "next": "s4_gather_provisions",
+          "morale": 25
+        },
+        {
+          "id": "s3_cookfire_quiet",
+          "text": "Sit in silence and share the fire",
+          "next": "s4_gather_provisions",
+          "morale": 15
+        }
+      ],
+      "npcs": [
+        "soldier"
+      ],
+      "unlocks": [
+        "codex_stalemate"
+      ]
+    },
+    "s3_hotspot_supply": {
+      "title": "The Supply Tent - Sustenance and Duty",
+      "dialogue": [
+        "The supply tent smells of grain, salt, and dried fruit. Sacks are stacked high; clay jars line the shelves. You find the captain of your brothers' unit sorting parcels. He looks up when he sees your provisions, and recognition dawns.",
+        "\"Provisions from Bethlehem! Your father sent you? Your brothers are strong men. They hold the line well.\""
+      ],
+      "choices": [
+        {
+          "id": "s3_supply_explain",
+          "text": "Explain that you've brought supplies from home for your brothers",
+          "next": "s4_gather_provisions",
+          "morale": 0
+        }
+      ],
+      "unlocks": [
+        "codex_ten_cheeses"
+      ]
+    },
+    "s3_hotspot_brook": {
+      "title": "The Brook - A Moment of Stillness",
+      "dialogue": [
+        "You find the brook unexpectedly: clear water over smooth stones, reeds catching the late light. The sound of the camp fades. Here, for a moment, the world is not divided by armies.",
+        "You kneel and drink. The water is cool, real, alive in a way nothing else in the valley has seemed."
+      ],
+      "choices": [
+        {
+          "id": "s3_brook_return",
+          "text": "Return to the camp with renewed resolve",
+          "next": "s4_gather_provisions",
+          "morale": 0
+        }
+      ],
+      "unlocks": [
+        "codex_five_stones"
+      ]
+    },
+    "s4_gather_provisions": {
+      "title": "The Camp - A Shepherd Arrives",
+      "dialogue": [
+        "You stand with your brothers when word ripples through the camp: a young shepherd has come from Bethlehem. His name is David. He has brought provisions from their home: grain, loaves, ten cheeses for the captain of their thousand.",
+        "The supplies are meager comfort against the weight that settles on the camp. Then a sound rises from the Philistine side. Voices. Shouting. One of your brothers turns to you, grave. \"The taunt. Goliath is about to call us out. Will you come and see?\""
+      ],
+      "choices": [
+        {
+          "id": "s4_choice_witness",
+          "text": "Come to the battle line and witness the taunt",
+          "next": "s5_the_taunt",
+          "morale": 0
+        }
+      ],
+      "npcs": [
+        "soldier"
+      ]
+    },
+    "s5_the_taunt": {
+      "title": "The Battle Line - Goliath's Challenge",
+      "npcs": [
+        "soldier"
+      ],
+      "dialogue": [
+        "You stand at the ridge with your brothers and the gathered men. Below, across the ravine, Goliath stands on the taunt ground, a figure of bronze and immensity. His shield-bearer is tiny beside him.",
+        "Goliath's voice booms across the valley, taunting and challenging. The Israelite men beside you are silent, afraid. The challenge hangs in the air like a stone about to fall.",
+        "The soldier beside you says quietly: \"He is so large. How can any man stand against him?\""
+      ],
+      "choices": [
+        {
+          "id": "s5_choice_stand",
+          "text": "Stand your ground and face the taunt with the men",
+          "next": "s6_encouragement",
+          "morale": 15
+        },
+        {
+          "id": "s5_choice_encourage",
+          "text": "Speak encouragement to the men around you",
+          "next": "s6_encouragement",
+          "morale": 25
+        },
+        {
+          "id": "s5_choice_keep_head_down",
+          "text": "Keep your head down and say nothing",
+          "next": "s6_encouragement",
+          "morale": -10
+        }
+      ],
+      "unlocks": [
+        "codex_goliath"
+      ]
+    },
+    "s6_encouragement": {
+      "title": "After the Taunt - A Young Shepherd's Faith",
+      "npcs": [
+        "soldier"
+      ],
+      "unlocks": [
+        "codex_david_faith"
+      ],
+      "dialogue": [
+        "As the men stand stunned and silent, a young shepherd in simple clothes steps forward from the crowd. His name is David. Without armor, without hesitation, he speaks to the king.",
+        {
+          "text": "\"for the battle is the LORD's, and he will give you into our hands.\" (1 Samuel 17:47, KJV)"
+        },
+        {
+          "text": "Did you hear? The battle is the Lord's. If that boy can believe it... perhaps we can too.",
+          "min": 20
+        },
+        {
+          "text": "A young shepherd. Either the bravest thing I've ever seen, or the foolishest.",
+          "min": -5,
+          "max": 19
+        },
+        {
+          "text": "Even the boy sees what we cannot. That shame cuts deeper than the fear.",
+          "max": -10
+        }
+      ],
+      "choices": [
+        {
+          "id": "s6_choice_believe",
+          "text": "Witness David's courage and feel hope kindle",
+          "next": "s7_the_battle",
+          "morale": 0
+        }
+      ]
+    },
+    "s7_the_battle": {
+      "title": "The Valley - David Meets Goliath",
+      "npcs": [],
+      "dialogue": [
+        "David walks into the ravine alone, a sling in his hand, five smooth stones in his pouch. Goliath sees him, a youth, unarmed in the giant's eyes, and ridicule turns to rage. The giant charges.",
+        "In an instant that will echo through history, David's sling finds its mark. Goliath falls. The armies surge forward. The stalemate is broken. You stand witnessing what you will carry the rest of your life."
+      ],
+      "choices": [
+        {
+          "id": "s7_choice_reflect",
+          "text": "Take a moment to let this settle into your soul",
+          "next": "s8_reflection",
+          "morale": 0
+        }
+      ]
+    },
+    "s8_reflection": {
+      "title": "Reflection - What You Have Seen and Learned",
+      "npcs": [],
+      "reflection": {
+        "prompt": "What do you take from this day? What will you remember most?"
+      },
+      "dialogue": [
+        "The valley quiets. Smoke drifts. The armies move to secure the field. You stand apart for a moment, your mind full of what you have witnessed: the fear, the faith, the moment when the outcome changed.",
+        "Your choices in this valley, what you said, who you encouraged, how you bore witness, shaped more than you knew. Now, in this quiet moment, what do you make of it all?"
+      ],
+      "choices": [
+        {
+          "id": "s8_choice_write",
+          "text": "Write a reflection on what happened here",
+          "next": "s9_aftermath",
+          "morale": 0
+        }
+      ]
+    },
+    "s9_aftermath": {
+      "title": "Aftermath - The Codex & Your Journey",
+      "npcs": [],
+      "codexDisplay": true,
+      "dialogue": [
+        "The battle is over. Your brothers embrace you. You arrived in the Valley of Elah to hold position, and you stayed to witness Scripture unfold.",
+        "A young man from Bethlehem walked into the ravine with a sling and stones. As the sun sets, the codex entries you unlocked throughout your journey appear before you. You have experienced history."
+      ],
+      "choices": [
+        {
+          "id": "s9_choice_again",
+          "text": "Play again with different choices",
+          "next": "s1_arrival",
+          "morale": 0,
+          "reset": true
+        },
+        {
+          "id": "s9_choice_menu",
+          "text": "Return to menu",
+          "next": "menu",
+          "morale": 0
+        }
+      ]
+    }
+  },
+  "codex": {
+    "codex_valley_setting": {
+      "title": "The Valley of Elah",
+      "content": "The Valley of Elah lies between Judah and Philistia. For forty days, the armies have faced each other in stalemate.",
+      "citation": "Setting drawn from 1 Samuel 17 (historical background, not a quotation)"
+    },
+    "codex_stalemate": {
+      "title": "Forty Days of Waiting",
+      "content": "And the Philistine drew near morning and evening, and presented himself forty days.",
+      "citation": "1 Samuel 17:16, KJV"
+    },
+    "codex_ten_cheeses": {
+      "title": "The Captain of Their Thousand",
+      "content": "And carry these ten cheeses unto the captain of their thousand, and look how thy brethren fare, and take their pledge.",
+      "citation": "1 Samuel 17:18, KJV"
+    },
+    "codex_five_stones": {
+      "title": "Smooth Stones",
+      "content": "And he chose him five smooth stones out of the brook, and put them in a shepherd's bag which he had, even in a scrip; and his sling was in his hand: and he drew near to the Philistine.",
+      "citation": "1 Samuel 17:40, KJV"
+    },
+    "codex_goliath": {
+      "title": "The Giant of Gath",
+      "content": "And he had an helmet of brass upon his head, and he was armed with a coat of mail; and the weight of the coat was five thousand shekels of brass. And he had greaves of brass upon his legs, and a target of brass between his shoulders. And the staff of his spear was like a weaver's beam; and his spear's head weighed six hundred shekels of iron: and one bearing a shield went before him.",
+      "citation": "1 Samuel 17:5-7, KJV"
+    },
+    "codex_david_faith": {
+      "title": "The Battle is the Lord's",
+      "content": "Then said David to the Philistine, Thou comest to me with a sword, and with a spear, and with a shield: but I come to thee in the name of the LORD of hosts, the God of the armies of Israel, whom thou hast defied. This day will the LORD deliver thee into mine hand... that all the earth may know that there is a God in Israel.",
+      "citation": "1 Samuel 17:45-46, KJV"
+    }
+  }
+}
